@@ -121,8 +121,27 @@ only 1 byte (8 bits), which also means they can be performed relatively fast by 
 
 Start:
   ; TODO:
+  cld         ; Remember to disable BCD decimal mode to avoid wrong arithmetic
   lda #10     ; Load the A register with the decimal value 10
   sta $80     ; Store the value from A into memory position $80
   inc $80     ; Increment the value inside a (zero page) memory position $80
   dec $80     ; Decrement the value inside a (zero page) memory position $80
   
+----------------------------------------------------------------------------------------------------------------------------------------------------
+  
+Exercise 8
+Your goal here is to create a loop that counts down from 10 to 0. You should also fill the
+memory addresses from $80 to $8A with values from 0 to A.
+$80 $81 $82 $83 $84 $85 $86 $87 $88 $89 $8A
+0 1 2 3 4 5 6 7 8 9 A
+
+  processor 6502
+
+Start:
+  ldy #10 ; Initialize the Y register with the decimal value 10
+Loop:
+  ; TODO:
+  tya             ; Transfer Y to A
+  sta $80,y       ; Store the value in A inside memory position $80+Y
+  dey             ; Decrement Y
+  bpl Loop        ; Branch back to "Loop" until we are done  
