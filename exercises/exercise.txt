@@ -2,6 +2,7 @@ Exercise 1
 Your goal here is to simply load the processor registers A, X, and Y with some values.
 
   processor 6502
+
 Start:
   ; TODO:
   lda #$82 ; Load the A register with the literal hexadecimal value $82
@@ -14,6 +15,7 @@ Exercise 2
 Your goal here is to just store some values into zero-page memory positions.
 
   processor 6502
+  
 Start:
   ; TODO:
   lda #$A        ; Load the A register with the hexadecimal value $A
@@ -21,3 +23,20 @@ Start:
   sta $80        ; Store the value in the A register into memory address $80
   stx $81        ; Store the value in the X register into memory address $81
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 3
+This exercise is about transferring values from registers to other registers.
+
+  processor 6502
+
+Start:
+  ; TODO:
+  lda #15     ; Load the A register with the literal decimal value 15
+  tax         ; Transfer the value from A to X
+  tay         ; Transfer the value from A to Y
+  txa         ; Transfer the value from X to A
+  tya         ; Transfer the value from Y to A
+  ldx #6      ; Load X with the decimal value 6
+  tax         ; Transfer the value from X to Y
+  tay         ; do in two steps
