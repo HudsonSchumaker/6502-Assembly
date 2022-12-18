@@ -40,3 +40,47 @@ Start:
   ldx #6      ; Load X with the decimal value 6
   tax         ; Transfer the value from X to Y
   tay         ; do in two steps
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 4
+This exercise is about adding and subtracting values. Adding and subtracting are math
+operations that are done by the processor ALU (arithmetic-logic-unit). Since the ALU
+can only manipulate values from the (A)ccumulator, all these additions and subtractions
+must be performed with the values in the A register.
+
+  processor 6502
+
+Start:
+  ; TODO:
+  lda #100    ; Load the A register with the literal decimal value 100
+  clc         ; Add the decimal value 5 to the accumulator
+  adc #5      
+  
+  sec         ; Subtract the decimal value 10 from the accumulator
+  sbc #10
+              ; Register A should now contain the decimal 95 (or $5F in hexadecimal)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Exercise 5
+The ADC and SBC instructions can also be used with different addressing modes. The
+above exercise used ADC with immediate mode (adding a literal value directly into the
+accumulator), but we can also ask ADC to add a value from a (zero page) memory
+position into the accumulator.
+
+  processor 6502
+
+Start:
+  ; TODO:
+  lda #$A     ; Load the A register with the hexadecimal value $A
+  ldx #%1010  ; Load the X register with the binary value %1010
+  sta $80     ; Store the value in the A register into (zero page) memory address $80
+  stx $81     ; Store the value in the X register into (zero page) memory address $81
+  lda #10     ; Load A with the decimal value 10
+  lda $80     ; Add to A the value inside RAM address $80
+  clc         ; Add to A the value inside RAM address $81
+  adc $81
+              ; A should contain (#10 + $A + %1010) = #30 (or $1E in hexadecimal)
+  sta $82     ; Store the value of A into RAM position $82
+
