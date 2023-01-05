@@ -7,8 +7,12 @@
     lda #a
   .endif
   
-   .ifnblank x
+  .ifnblank x
     ldx #x
+  .endif
+  
+  .ifnblank y
+    ldy #y
   .endif
 
 
