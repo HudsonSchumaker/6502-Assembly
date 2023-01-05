@@ -6,6 +6,10 @@
   .ifnblank a
     lda #a
   .endif
+  
+   .ifnblank x
+    ldx #x
+  .endif
 
 
 .endmacro
