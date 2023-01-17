@@ -15,5 +15,4 @@
     ldy #y
   .endif
 
-
 .endmacro
